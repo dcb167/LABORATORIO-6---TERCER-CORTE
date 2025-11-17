@@ -82,11 +82,25 @@
 
 <img width="1353" height="615" alt="image" src="https://github.com/user-attachments/assets/c986c343-beb4-4a06-8f82-7e077a11925c" /></br>
 
-<strong> Figura 2. </strong> Visualización Aplicactivo en Streamlit 2 (Interfaz Visual).
+<strong> Figura 3. </strong> Visualización Aplicactivo en Streamlit 2 (Interfaz Visual).
 
 <img width="1238" height="610" alt="image" src="https://github.com/user-attachments/assets/1b6445fb-2518-4ccb-9b4d-ace514ceba05" /></br>
 
-<strong> Figura 3. </strong> Visualización Aplicactivo en Streamlit 3 (Interfaz Visual).
+<strong> Figura 4. </strong> Visualización Aplicactivo en Streamlit 3 (Interfaz Visual).
+
++ Seguido de ello, se procedió a realizar el archivo Dockerfile y requirements.txt para poder crear la imagen como se puede visualizar a continuación:
+
+<img width="886" height="264" alt="image" src="https://github.com/user-attachments/assets/5f32db6e-23d2-4f21-ae84-190619764ce0" /></br>
+
+<strong> Figura 5. </strong> Crear una imagen en Docker en el S.O de Windows.
+
++ Por último, se ejecutó el contenedor:
+
+<img width="622" height="123" alt="image" src="https://github.com/user-attachments/assets/60a2f8fc-2a45-41fe-96b1-ad5b8d25c27d" /></br>
+
+<strong> Figura 6. </strong> Ejecución del contenedor en el S.O de Windows.
+
+
 
 
 
