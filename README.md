@@ -52,27 +52,27 @@
       st.sidebar.radio("Selecciona el producto",["Tablet","Reloj"])
 
 
-    st.header(":blue[1. Reseña Tablet]")
+      st.header(":blue[1. Reseña Tablet]")
 
-    st.image("Imagen1.jpg")
+      st.image("Imagen1.jpg")
 
-    data_Tablet = pd.DataFrame({
-      'Clasificación Sentimiento': ['Positiva', 'Negativa', 'Neutra'],
-      'Cantidad': [2, 2, 2]
-    })
+      data_Tablet = pd.DataFrame({
+        'Clasificación Sentimiento': ['Positiva', 'Negativa', 'Neutra'],
+        'Cantidad': [2, 2, 2]
+      })
 
-    st.bar_chart(data_Tablet)
+      st.bar_chart(data_Tablet)
 
-    st.header(":blue[2. Reseña Reloj]")
+      st.header(":blue[2. Reseña Reloj]")
 
-    st.image("Imagen2.jpg")
+      st.image("Imagen2.jpg")
 
-    data_Reloj = pd.DataFrame({
-      'Clasificación': ['Neutra', 'Positiva'],
-      'Cantidad': [4, 2]
-    })
+      data_Reloj = pd.DataFrame({
+        'Clasificación': ['Neutra', 'Positiva'],
+        'Cantidad': [4, 2]
+      })
 
-    st.bar_chart(data_Reloj)
+      st.bar_chart(data_Reloj)
 
 ### 2. Segundo Punto: Desarrollar Juego 2D Tipo Mario Bros Implementando Hilos
 
