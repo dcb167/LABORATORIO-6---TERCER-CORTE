@@ -17,6 +17,31 @@
 + De tal forma que, se generó un conteo con cada clasificación por producto electrónico llegando al siguiente código resultante:
 
 
+      import threading
+      from collections import Counter
+
+      Reseña_Tablet = ["Positiva","Negativa","Positiva","Neutra","Negativa","Neutra"]
+      Reseña_Reloj  = ["Positiva","Positiva","Neutra","Neutra","Neutra","Neutra"]
+
+      resultados = {}
+      lock = threading.Lock()
+
+      def Reseña_Productos_Electronicos(nombre, lista):
+          conteo = Counter(lista)
+          with lock:
+              resultados[nombre] = conteo
+
+      threads = [
+          threading.Thread(target=Reseña_Productos_Electronicos, args=("Tablet", Reseña_Tablet)),
+          threading.Thread(target=Reseña_Productos_Electronicos, args=("Reloj", Reseña_Reloj))
+      ]
+
+      for t in threads: t.start()
+      for t in threads: t.join()
+
+      print(resultados)
+
+
 
 
 
