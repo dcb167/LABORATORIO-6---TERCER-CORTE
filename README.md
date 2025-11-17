@@ -2,4 +2,4 @@
 
 ## Elaborado por: Laura Rodriguez y Diana Bernal 
 
-## Punto 1
+### Punto 1
