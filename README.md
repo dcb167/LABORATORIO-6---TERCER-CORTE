@@ -74,6 +74,14 @@
 
       st.bar_chart(data_Reloj)
 
+<img width="1254" height="615" alt="image" src="https://github.com/user-attachments/assets/c5ba45ba-a244-4e37-bbc3-7268ef69f8b1" />
+
+<img width="1353" height="615" alt="image" src="https://github.com/user-attachments/assets/c986c343-beb4-4a06-8f82-7e077a11925c" />
+
+<img width="1238" height="610" alt="image" src="https://github.com/user-attachments/assets/1b6445fb-2518-4ccb-9b4d-ace514ceba05" />
+
+
+
 ### 2. Segundo Punto: Desarrollar Juego 2D Tipo Mario Bros Implementando Hilos
 
 ### 3. Tercer Punto: Desarrollar Detección de Diferentes Gestos de Mano Usando Hilos
