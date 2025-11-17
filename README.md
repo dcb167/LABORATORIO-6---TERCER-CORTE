@@ -41,6 +41,39 @@
 
       print(resultados)
 
++ Seguido de ello, se realizo una pequeña interfaz de visualización en Streamlit. A continuación, se podra evidenciar el código realizado y el respectivo resultado:
+
+      import streamlit as st
+      import pandas as pd
+
+      st.title(":blue[Reseña de Productos de Electrónica]")
+
+      st.sidebar.title("Visualización de Productos de Electrónica:")
+      st.sidebar.radio("Selecciona el producto",["Tablet","Reloj"])
+
+
+    st.header(":blue[1. Reseña Tablet]")
+
+    st.image("Imagen1.jpg")
+
+    data_Tablet = pd.DataFrame({
+      'Clasificación Sentimiento': ['Positiva', 'Negativa', 'Neutra'],
+      'Cantidad': [2, 2, 2]
+    })
+
+    st.bar_chart(data_Tablet)
+
+    st.header(":blue[2. Reseña Reloj]")
+
+    st.image("Imagen2.jpg")
+
+    data_Reloj = pd.DataFrame({
+      'Clasificación': ['Neutra', 'Positiva'],
+      'Cantidad': [4, 2]
+    })
+
+    st.bar_chart(data_Reloj)
+
 ### 2. Segundo Punto: Desarrollar Juego 2D Tipo Mario Bros Implementando Hilos
 
 ### 3. Tercer Punto: Desarrollar Detección de Diferentes Gestos de Mano Usando Hilos
