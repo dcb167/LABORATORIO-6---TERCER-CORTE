@@ -43,6 +43,8 @@
 
 ### 2. Segundo Punto: Desarrollar Juego 2D Tipo Mario Bros Implementando Hilos
 
+### 3. Tercer Punto: Desarrollar Detección de Diferentes Gestos de Mano Usando Hilos
+
 
 
 
