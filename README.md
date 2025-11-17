@@ -14,7 +14,7 @@
   
 + Es importante mencionar, que en cada arreglo se tiene la clasificación del sentimiento. En este caso: Positivo, Neutro y Negativo.
   
-+ De tal forma que,se generó un conteo con cada clasificación por producto electrónico llegando al siguiente código resultante:
++ De tal forma que, se generó un conteo con cada clasificación por producto electrónico llegando al siguiente código resultante:
 
 
 
