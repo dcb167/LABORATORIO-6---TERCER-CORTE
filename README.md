@@ -74,11 +74,19 @@
 
       st.bar_chart(data_Reloj)
 
-<img width="1254" height="615" alt="image" src="https://github.com/user-attachments/assets/c5ba45ba-a244-4e37-bbc3-7268ef69f8b1" />
++ De tal forma, que el resultado obtenido fue el siguiente:
+  
+<img width="1254" height="615" alt="image" src="https://github.com/user-attachments/assets/c5ba45ba-a244-4e37-bbc3-7268ef69f8b1" /></br>
 
-<img width="1353" height="615" alt="image" src="https://github.com/user-attachments/assets/c986c343-beb4-4a06-8f82-7e077a11925c" />
+<strong> Figura 2. </strong> Visualización Aplicactivo en Streamlit 1 (Interfaz Visual).
 
-<img width="1238" height="610" alt="image" src="https://github.com/user-attachments/assets/1b6445fb-2518-4ccb-9b4d-ace514ceba05" />
+<img width="1353" height="615" alt="image" src="https://github.com/user-attachments/assets/c986c343-beb4-4a06-8f82-7e077a11925c" /></br>
+
+<strong> Figura 2. </strong> Visualización Aplicactivo en Streamlit 2 (Interfaz Visual).
+
+<img width="1238" height="610" alt="image" src="https://github.com/user-attachments/assets/1b6445fb-2518-4ccb-9b4d-ace514ceba05" /></br>
+
+<strong> Figura 3. </strong> Visualización Aplicactivo en Streamlit 3 (Interfaz Visual).
 
 
 
