@@ -211,70 +211,70 @@
           processor = GestureProcessor()
     
     
-    images = [image.numpy_view() for image in images]
-    gestures = [top_gesture for (top_gesture, _) in results]
+          images = [image.numpy_view() for image in images]
+          gestures = [top_gesture for (top_gesture, _) in results]
     
     
-    rows = int(math.sqrt(len(images)))
-    cols = len(images) // rows
+          rows = int(math.sqrt(len(images)))
+          cols = len(images) // rows
     
     
-    FIGSIZE = 13.0
-    SPACING = 0.1
-    subplot = (rows, cols, 1)
+          FIGSIZE = 13.0
+          SPACING = 0.1
+          subplot = (rows, cols, 1)
     
-    if rows < cols:
-        plt.figure(figsize=(FIGSIZE, FIGSIZE/cols*rows))
-    else:
-        plt.figure(figsize=(FIGSIZE/rows*cols, FIGSIZE))
-    
-    
-    threads = []
-    processed_data = []
-    
-    for i, (image, gesture) in enumerate(zip(images[:rows*cols], gestures[:rows*cols])):
-        thread = threading.Thread(
-            target=lambda i, img, gest: processed_data.append(
-                (i, *process_and_annotate_image(img, gest, processor))),
-            args=(i, image, gesture)
-        )
-        threads.append(thread)
-        thread.start()
+          if rows < cols:
+              plt.figure(figsize=(FIGSIZE, FIGSIZE/cols*rows))
+          else:
+              plt.figure(figsize=(FIGSIZE/rows*cols, FIGSIZE))
     
     
-    for thread in threads:
-        thread.join()
+          threads = []
+          processed_data = []
+    
+          for i, (image, gesture) in enumerate(zip(images[:rows*cols], gestures[:rows*cols])):
+              thread = threading.Thread(
+                  target=lambda i, img, gest: processed_data.append(
+                      (i, *process_and_annotate_image(img, gest, processor))),
+                  args=(i, image, gesture)
+              )  
+              threads.append(thread)
+              thread.start()
     
     
-    processed_data.sort(key=lambda x: x[0])
+          for thread in threads:
+              thread.join()
     
     
-    for _, annotated_image, title in processed_data:
-        dynamic_titlesize = FIGSIZE*SPACING/max(rows,cols) * 40 + 3
-        subplot = display_one_image(annotated_image, title, subplot, titlesize=dynamic_titlesize)
+          processed_data.sort(key=lambda x: x[0])
     
     
-    plt.tight_layout()
-    plt.subplots_adjust(wspace=SPACING, hspace=SPACING)
+          for _, annotated_image, title in processed_data:
+              dynamic_titlesize = FIGSIZE*SPACING/max(rows,cols) * 40 + 3
+              subplot = display_one_image(annotated_image, title, subplot, titlesize=dynamic_titlesize)
     
     
-    buf = io.BytesIO()
-    plt.savefig(buf, format='png', bbox_inches='tight', pad_inches=0.1)
-    buf.seek(0)
-    plt.close()
+          plt.tight_layout()
+          plt.subplots_adjust(wspace=SPACING, hspace=SPACING)
     
-    return buf
+    
+          buf = io.BytesIO()
+          plt.savefig(buf, format='png', bbox_inches='tight', pad_inches=0.1)
+          buf.seek(0)
+          plt.close()
+    
+          return buf
 
 
-def main():
-    st.title("Hand Gesture Recognition with MediaPipe")
-    st.write("Upload images to detect hand gestures and landmarks")
+    def main():
+        st.title("Hand Gesture Recognition with MediaPipe")
+        st.write("Upload images to detect hand gestures and landmarks")
     
-    uploaded_files = st.file_uploader("Choose images", type=["jpg", "jpeg", "png"], accept_multiple_files=True)
+        uploaded_files = st.file_uploader("Choose images", type=["jpg", "jpeg", "png"], accept_multiple_files=True)
     
-    if uploaded_files:
-        images = []
-        results = []  
+        if uploaded_files:
+            images = []
+            results = []  
         
         for uploaded_file in uploaded_files:
             image = Image.open(uploaded_file)
