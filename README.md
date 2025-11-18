@@ -324,7 +324,14 @@
 
         CMD ["python", "-m", "streamlit", "run", "punto3.py", "--server.port=8501", "--server.address=0.0.0.0"]
 
++ Luego, se realizó el archivo requirements.txt de la siguiente forma:
 
+        streamlit
+        mediapipe
+        matplotlib
+        numpy
+        Pillow
++ 
 
 
 
