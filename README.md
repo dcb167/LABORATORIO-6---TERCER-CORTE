@@ -295,6 +295,35 @@
       if __name__ == "__main__":
       main()
 
++ Seguido de ello, se creo el archivo Dockerfile dando como resultado lo siguiente:
+
+      FROM python:3.9-slim
+
+
+      WORKDIR /app
+
+      RUN apt-get update && apt-get install -y \
+          libgl1 \
+          libglib2.0-0 \
+          libsm6 \
+          libxrender1 \
+          libfontconfig1 \
+          && rm -rf /var/lib/apt/lists/*
+
+    COPY requirements.txt .
+
+
+    RUN pip install --no-cache-dir -r requirements.txt
+
+
+    COPY . .
+
+
+    EXPOSE 8501
+
+
+    CMD ["python", "-m", "streamlit", "run", "punto3.py", "--server.port=8501", "--server.address=0.0.0.0"]
+
 
 
 
