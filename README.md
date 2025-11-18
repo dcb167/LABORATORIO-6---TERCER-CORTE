@@ -137,39 +137,39 @@
         'ytick.right': False
       })
 
-mp_hands = mp.solutions.hands
-mp_drawing = mp.solutions.drawing_utils
-mp_drawing_styles = mp.solutions.drawing_styles
+      mp_hands = mp.solutions.hands
+      mp_drawing = mp.solutions.drawing_utils
+      mp_drawing_styles = mp.solutions.drawing_styles
 
-class GestureProcessor:
-    def __init__(self):
-        self.hands = mp_hands.Hands(
-            static_image_mode=True,
-            max_num_hands=2,
-            min_detection_confidence=0.7)
-        self.results_cache = {}
+      class GestureProcessor:
+        def __init__(self):
+            self.hands = mp_hands.Hands(
+                static_image_mode=True,
+                max_num_hands=2,
+                min_detection_confidence=0.7)
+            self.results_cache = {}
 
-    def process_image(self, image, image_id):
-        """Process an image to detect hand landmarks (thread-safe)"""
-        try:
-            processing_semaphore.acquire()
+        def process_image(self, image, image_id):
+            """Process an image to detect hand landmarks (thread-safe)"""
+            try:
+                processing_semaphore.acquire()
             
             
-            with result_lock:
-                if image_id in self.results_cache:
-                    return self.results_cache[image_id]
+                with result_lock:
+                    if image_id in self.results_cache:
+                        return self.results_cache[image_id]
             
             
-            with image_lock:
-                image_np = np.array(image)
-                results = self.hands.process(image_np)
+                with image_lock:
+                    image_np = np.array(image)
+                    results = self.hands.process(image_np)
             
            
-            multi_hand_landmarks = results.multi_hand_landmarks or []
-            with result_lock:
-                self.results_cache[image_id] = multi_hand_landmarks
+                multi_hand_landmarks = results.multi_hand_landmarks or []
+                with result_lock:
+                    self.results_cache[image_id] = multi_hand_landmarks
             
-            return multi_hand_landmarks
+                return multi_hand_landmarks
         finally:
             processing_semaphore.release()
 
@@ -292,8 +292,8 @@ def main():
             image_buffer = display_batch_of_images_with_gestures_and_hand_landmarks(mp_images, results)
             st.image(image_buffer, use_container_width=True)
 
-if __name__ == "__main__":
-    main()
+      if __name__ == "__main__":
+      main()
 
 
 
