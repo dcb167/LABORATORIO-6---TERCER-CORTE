@@ -203,12 +203,12 @@
                 mp_drawing_styles.get_default_hand_landmarks_style(),
                 mp_drawing_styles.get_default_hand_connections_style())
     
-    return annotated_image, f"{gesture.category_name} ({gesture.score:.2f})"
+                return annotated_image, f"{gesture.category_name} ({gesture.score:.2f})"
 
-def display_batch_of_images_with_gestures_and_hand_landmarks(images, results):
-    """Displays a batch of images with the gesture category and its score along with the hand landmarks."""
+      def display_batch_of_images_with_gestures_and_hand_landmarks(images, results):
+        """Displays a batch of images with the gesture category and its score along with the hand landmarks."""
     
-    processor = GestureProcessor()
+          processor = GestureProcessor()
     
     
     images = [image.numpy_view() for image in images]
