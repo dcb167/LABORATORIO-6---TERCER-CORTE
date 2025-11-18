@@ -173,7 +173,7 @@ class GestureProcessor:
         finally:
             processing_semaphore.release()
 
-def display_one_image(image, title, subplot, titlesize=16):
+  def display_one_image(image, title, subplot, titlesize=16):
     """Displays one image along with the predicted category name and score."""
     plt.subplot(*subplot)
     plt.imshow(image)
