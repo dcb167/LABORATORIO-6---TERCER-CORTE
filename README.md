@@ -331,7 +331,18 @@
         matplotlib
         numpy
         Pillow
-+ 
++ Después, se ejecutó la imagen y el contenedor para poder visualizar el streamlit con el resultado final de la detección de la mano:
+
+<img width="713" height="376" alt="image" src="https://github.com/user-attachments/assets/880df93d-b3ac-430a-b18c-8e78f9f73df4" /></br>
+
+<strong> Figura 7. </strong> Visualización del Streamlit.
+
+<img width="517" height="387" alt="image" src="https://github.com/user-attachments/assets/e3e07bf4-7cc1-4a41-941e-8f380afc1a93" /></br>
+
+<strong> Figura 7. </strong> Visualización de la detección de la mano (Resultado Final).
+
+
+
 
 
 
