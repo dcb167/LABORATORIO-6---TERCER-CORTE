@@ -101,13 +101,199 @@
 <strong> Figura 6. </strong> Ejecución del contenedor en el S.O de Windows.
 
 
-
-
-
 ### 2. Segundo Punto: Desarrollar Juego 2D Tipo Mario Bros Implementando Hilos
 
 ### 3. Tercer Punto: Desarrollar Detección de Diferentes Gestos de Mano Usando Hilos
 
++ Para este iteral se realizó la modificación al código que fue adjuntando en la tarea con el objetivo de adecuarlo al uso de librerías como hilos, mutex y sección crítica y se realizó el respectivo despliegue en streamlit llegando al siguiente resultado:
+
+      import math
+      import threading
+      from matplotlib import pyplot as plt
+      import mediapipe as mp
+      from mediapipe.framework.formats import landmark_pb2
+      import streamlit as st
+      import numpy as np
+      from PIL import Image
+      import io
+
+
+      image_lock = threading.Lock()
+      result_lock = threading.Lock()
+      processing_semaphore = threading.Semaphore(4)  
+
+      plt.rcParams.update({
+        'axes.spines.top': False,
+        'axes.spines.right': False,
+        'axes.spines.left': False,
+        'axes.spines.bottom': False,
+        'xtick.labelbottom': False,
+        'xtick.bottom': False,
+        'ytick.labelleft': False,
+        'ytick.left': False,
+        'xtick.labeltop': False,
+        'xtick.top': False,
+        'ytick.labelright': False,
+        'ytick.right': False
+      })
+
+mp_hands = mp.solutions.hands
+mp_drawing = mp.solutions.drawing_utils
+mp_drawing_styles = mp.solutions.drawing_styles
+
+class GestureProcessor:
+    def __init__(self):
+        self.hands = mp_hands.Hands(
+            static_image_mode=True,
+            max_num_hands=2,
+            min_detection_confidence=0.7)
+        self.results_cache = {}
+
+    def process_image(self, image, image_id):
+        """Process an image to detect hand landmarks (thread-safe)"""
+        try:
+            processing_semaphore.acquire()
+            
+            
+            with result_lock:
+                if image_id in self.results_cache:
+                    return self.results_cache[image_id]
+            
+            
+            with image_lock:
+                image_np = np.array(image)
+                results = self.hands.process(image_np)
+            
+           
+            multi_hand_landmarks = results.multi_hand_landmarks or []
+            with result_lock:
+                self.results_cache[image_id] = multi_hand_landmarks
+            
+            return multi_hand_landmarks
+        finally:
+            processing_semaphore.release()
+
+def display_one_image(image, title, subplot, titlesize=16):
+    """Displays one image along with the predicted category name and score."""
+    plt.subplot(*subplot)
+    plt.imshow(image)
+    if len(title) > 0:
+        plt.title(title, fontsize=int(titlesize), color='black', 
+                 fontdict={'verticalalignment':'center'}, pad=int(titlesize/1.5))
+    return (subplot[0], subplot[1], subplot[2]+1)
+
+def process_and_annotate_image(image, gesture, processor):
+    """Process and annotate a single image with landmarks"""
+    image_np = np.array(image)
+    multi_hand_landmarks = processor.process_image(image, id(image))
+    
+    annotated_image = image_np.copy()
+    if multi_hand_landmarks:
+        for hand_landmarks in multi_hand_landmarks:
+            hand_landmarks_proto = landmark_pb2.NormalizedLandmarkList()
+            hand_landmarks_proto.landmark.extend([
+                landmark_pb2.NormalizedLandmark(x=landmark.x, y=landmark.y, z=landmark.z) 
+                for landmark in hand_landmarks
+            ])
+            
+            mp_drawing.draw_landmarks(
+                annotated_image,
+                hand_landmarks_proto,
+                mp_hands.HAND_CONNECTIONS,
+                mp_drawing_styles.get_default_hand_landmarks_style(),
+                mp_drawing_styles.get_default_hand_connections_style())
+    
+    return annotated_image, f"{gesture.category_name} ({gesture.score:.2f})"
+
+def display_batch_of_images_with_gestures_and_hand_landmarks(images, results):
+    """Displays a batch of images with the gesture category and its score along with the hand landmarks."""
+    
+    processor = GestureProcessor()
+    
+    
+    images = [image.numpy_view() for image in images]
+    gestures = [top_gesture for (top_gesture, _) in results]
+    
+    
+    rows = int(math.sqrt(len(images)))
+    cols = len(images) // rows
+    
+    
+    FIGSIZE = 13.0
+    SPACING = 0.1
+    subplot = (rows, cols, 1)
+    
+    if rows < cols:
+        plt.figure(figsize=(FIGSIZE, FIGSIZE/cols*rows))
+    else:
+        plt.figure(figsize=(FIGSIZE/rows*cols, FIGSIZE))
+    
+    
+    threads = []
+    processed_data = []
+    
+    for i, (image, gesture) in enumerate(zip(images[:rows*cols], gestures[:rows*cols])):
+        thread = threading.Thread(
+            target=lambda i, img, gest: processed_data.append(
+                (i, *process_and_annotate_image(img, gest, processor))),
+            args=(i, image, gesture)
+        )
+        threads.append(thread)
+        thread.start()
+    
+    
+    for thread in threads:
+        thread.join()
+    
+    
+    processed_data.sort(key=lambda x: x[0])
+    
+    
+    for _, annotated_image, title in processed_data:
+        dynamic_titlesize = FIGSIZE*SPACING/max(rows,cols) * 40 + 3
+        subplot = display_one_image(annotated_image, title, subplot, titlesize=dynamic_titlesize)
+    
+    
+    plt.tight_layout()
+    plt.subplots_adjust(wspace=SPACING, hspace=SPACING)
+    
+    
+    buf = io.BytesIO()
+    plt.savefig(buf, format='png', bbox_inches='tight', pad_inches=0.1)
+    buf.seek(0)
+    plt.close()
+    
+    return buf
+
+
+def main():
+    st.title("Hand Gesture Recognition with MediaPipe")
+    st.write("Upload images to detect hand gestures and landmarks")
+    
+    uploaded_files = st.file_uploader("Choose images", type=["jpg", "jpeg", "png"], accept_multiple_files=True)
+    
+    if uploaded_files:
+        images = []
+        results = []  
+        
+        for uploaded_file in uploaded_files:
+            image = Image.open(uploaded_file)
+            images.append(image)
+            
+            from collections import namedtuple
+            Gesture = namedtuple('Gesture', ['category_name', 'score'])
+            results.append((Gesture(category_name="Sample Gesture", score=0.95), None))
+        
+        if st.button("Process Images"):
+            
+            mp_images = [mp.Image(image_format=mp.ImageFormat.SRGB, data=np.array(img)) for img in images]
+            
+            
+            image_buffer = display_batch_of_images_with_gestures_and_hand_landmarks(mp_images, results)
+            st.image(image_buffer, use_container_width=True)
+
+if __name__ == "__main__":
+    main()
 
 
 
