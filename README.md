@@ -173,25 +173,25 @@
         finally:
             processing_semaphore.release()
 
-  def display_one_image(image, title, subplot, titlesize=16):
-    """Displays one image along with the predicted category name and score."""
-    plt.subplot(*subplot)
-    plt.imshow(image)
-    if len(title) > 0:
-        plt.title(title, fontsize=int(titlesize), color='black', 
+      def display_one_image(image, title, subplot, titlesize=16):
+        """Displays one image along with the predicted category name and score."""
+          plt.subplot(*subplot)
+          plt.imshow(image)
+          if len(title) > 0:
+              plt.title(title, fontsize=int(titlesize), color='black', 
                  fontdict={'verticalalignment':'center'}, pad=int(titlesize/1.5))
-    return (subplot[0], subplot[1], subplot[2]+1)
+          return (subplot[0], subplot[1], subplot[2]+1)
 
-def process_and_annotate_image(image, gesture, processor):
-    """Process and annotate a single image with landmarks"""
-    image_np = np.array(image)
-    multi_hand_landmarks = processor.process_image(image, id(image))
+    def process_and_annotate_image(image, gesture, processor):
+        """Process and annotate a single image with landmarks"""
+        image_np = np.array(image)
+        multi_hand_landmarks = processor.process_image(image, id(image))
     
-    annotated_image = image_np.copy()
-    if multi_hand_landmarks:
-        for hand_landmarks in multi_hand_landmarks:
-            hand_landmarks_proto = landmark_pb2.NormalizedLandmarkList()
-            hand_landmarks_proto.landmark.extend([
+        annotated_image = image_np.copy()
+        if multi_hand_landmarks:
+            for hand_landmarks in multi_hand_landmarks:
+                hand_landmarks_proto = landmark_pb2.NormalizedLandmarkList()
+                hand_landmarks_proto.landmark.extend([
                 landmark_pb2.NormalizedLandmark(x=landmark.x, y=landmark.y, z=landmark.z) 
                 for landmark in hand_landmarks
             ])
