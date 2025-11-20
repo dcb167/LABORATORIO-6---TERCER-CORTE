@@ -110,7 +110,13 @@
 <img width="882" height="45" alt="imagen" src="https://github.com/user-attachments/assets/ee664d3e-1fef-4ba9-b634-6338db6fae98" />
 
 + Aqui se puede visualizar la inicialización del codigo del juego de Mario Bros:
-![Uploading imagen.png…]()
+<img width="1509" height="931" alt="imagen" src="https://github.com/user-attachments/assets/be2bc986-f5f4-4115-9242-1b6b1650d92f" />
+
++ Creación de requerimientos:
+<img width="937" height="34" alt="imagen" src="https://github.com/user-attachments/assets/126f1514-5c82-4812-aedb-b6cc523bc67a" />
+
++ Creación del archivo del Dockerfile:
+<img width="937" height="34" alt="imagen" src="https://github.com/user-attachments/assets/92928ea5-2c7e-42fc-a51f-b16d1c9887d7" />
 
 
 
