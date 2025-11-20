@@ -106,6 +106,13 @@
 + Primero creamos el archivo del proyecto:
 <img width="1011" height="497" alt="imagen" src="https://github.com/user-attachments/assets/87bfcacb-cb6c-42a5-bf56-9e11d44e6ca0" />
 
++ Luego, se inicio realizando la creación del archivio para el codigo del juego:
+<img width="882" height="45" alt="imagen" src="https://github.com/user-attachments/assets/ee664d3e-1fef-4ba9-b634-6338db6fae98" />
+
++ Aqui se puede visualizar la inicialización del codigo del juego de Mario Bros:
+![Uploading imagen.png…]()
+
+
 
 ### 3. Tercer Punto: Desarrollar Detección de Diferentes Gestos de Mano Usando Hilos
 
