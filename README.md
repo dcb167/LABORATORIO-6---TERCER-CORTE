@@ -103,6 +103,10 @@
 
 ### 2. Segundo Punto: Desarrollar Juego 2D Tipo Mario Bros Implementando Hilos
 
++ Primero creamos el archivo del proyecto:
+<img width="1011" height="497" alt="imagen" src="https://github.com/user-attachments/assets/87bfcacb-cb6c-42a5-bf56-9e11d44e6ca0" />
+
+
 ### 3. Tercer Punto: Desarrollar Detección de Diferentes Gestos de Mano Usando Hilos
 
 + Para este iteral se realizó la modificación al código que fue adjuntando en la tarea con el objetivo de adecuarlo al uso de librerías como hilos, mutex y sección crítica y se realizó el respectivo despliegue en streamlit llegando al siguiente resultado:
