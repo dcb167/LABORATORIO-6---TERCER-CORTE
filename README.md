@@ -126,6 +126,10 @@
 <img width="1379" height="419" alt="imagen" src="https://github.com/user-attachments/assets/9d41571e-1f61-48f3-b024-8b73b60f1584" />
 <img width="1379" height="419" alt="imagen" src="https://github.com/user-attachments/assets/1f0fbd76-d7e2-4b87-8675-d915cfcf37f9" />
 
++ Visualización de la ejecución del juego en Docker:
+<img width="801" height="635" alt="imagen" src="https://github.com/user-attachments/assets/21b43082-a446-4add-a605-4e71a6b3a90c" />
++ Se puede observar que suma puntos y va quitando las vidas a medida que se tocan los enemigos:
+<img width="801" height="635" alt="imagen" src="https://github.com/user-attachments/assets/08468bdc-a45f-4b91-b551-9da682f0c0e4" />
 
 ### 3. Tercer Punto: Desarrollar Detección de Diferentes Gestos de Mano Usando Hilos
 
