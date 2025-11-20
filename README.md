@@ -122,14 +122,20 @@
 <img width="937" height="34" alt="imagen" src="https://github.com/user-attachments/assets/dc733380-ba90-46b0-8ef2-a1c3e4275f07" />
 
 ###### Una vez ya creados todos los archivos necesarios, y haber incluido hilos, mutex, semaforos, etc, iniciamos con la construcción y ejecución del juego:
+
 + Permitimos la conexión para la ventana del juego e iniciamos con la construcción de la imagen de Docker:
 <img width="1379" height="419" alt="imagen" src="https://github.com/user-attachments/assets/9d41571e-1f61-48f3-b024-8b73b60f1584" />
 <img width="1379" height="419" alt="imagen" src="https://github.com/user-attachments/assets/1f0fbd76-d7e2-4b87-8675-d915cfcf37f9" />
 
 + Visualización de la ejecución del juego en Docker:
 <img width="801" height="635" alt="imagen" src="https://github.com/user-attachments/assets/21b43082-a446-4add-a605-4e71a6b3a90c" />
+
 + Se puede observar que suma puntos y va quitando las vidas a medida que se tocan los enemigos:
 <img width="801" height="635" alt="imagen" src="https://github.com/user-attachments/assets/08468bdc-a45f-4b91-b551-9da682f0c0e4" />
+
++ Por ultimo vemos la pantalla cuando se acaban las vidas:
+<img width="1584" height="996" alt="imagen" src="https://github.com/user-attachments/assets/a3ad018d-32c2-4898-a48d-603a0d5de830" />
+
 
 ### 3. Tercer Punto: Desarrollar Detección de Diferentes Gestos de Mano Usando Hilos
 
