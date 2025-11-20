@@ -121,7 +121,7 @@
 + Ahora seguimos con la creación del Docker-compose:
 <img width="937" height="34" alt="imagen" src="https://github.com/user-attachments/assets/dc733380-ba90-46b0-8ef2-a1c3e4275f07" />
 
-+ Una vez ya creados tosdos los archivos necesarios, y haber incluido hilos, mutex, semaforos, etc, iniciamos con la construcción y ejecución del juego:
++ Una vez ya creados todos los archivos necesarios, y haber incluido hilos, mutex, semaforos, etc, iniciamos con la construcción y ejecución del juego:
 
 
 ### 3. Tercer Punto: Desarrollar Detección de Diferentes Gestos de Mano Usando Hilos
